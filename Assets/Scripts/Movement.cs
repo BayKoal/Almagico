@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class movement : MonoBehaviour
 {
     public float velocidad;
     public float fuerzaDeSalto;

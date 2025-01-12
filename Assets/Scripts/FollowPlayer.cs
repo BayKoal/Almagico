@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FollowPlayer : MonoBehaviour
+public class followPlayer : MonoBehaviour
 {
     private Vector2 angle = new Vector2(180f, 0f);  // Inicializa la cámara detrás del jugador
     public Transform follow;  // Referencia al jugador (Transform)
@@ -11,6 +11,7 @@ public class FollowPlayer : MonoBehaviour
     private bool isRotating = false;  // Variable para detectar si se está rotando
     private float mouseVal = 0f;
     private float mouseSpeed = 5f;
+
 
     // Start is called before the first frame update
     void Start()
