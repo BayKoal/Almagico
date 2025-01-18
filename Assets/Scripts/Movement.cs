@@ -24,6 +24,7 @@ public class movement : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("Cantidad de cartas encontradas: " + PlayerUI.itemCount);
         // Verifica si el jugador está tocando el suelo
         RaycastHit hit;
         Ray detecion = new Ray(transform.position, -transform.up);

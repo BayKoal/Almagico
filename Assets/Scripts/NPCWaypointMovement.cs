@@ -26,6 +26,14 @@ public class NPCNavMeshMovement : MonoBehaviour
 
     private Camera mainCamera; // Referencia a la cámara principal
 
+    // Referencia al PlayerUI donde se guarda el número de cartas
+    public PlayerUI playerUI;
+
+    // Variable modificable desde el Inspector para definir la cantidad de cartas necesarias
+    public int requiredCards = 3;  // Número de cartas necesarias para desbloquear el último mensaje
+
+    private bool hasRequiredCards = false;  // Estado que indica si el jugador tiene las cartas necesarias
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -93,7 +101,6 @@ public class NPCNavMeshMovement : MonoBehaviour
         if (player == null) return;
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-        Debug.Log("Distancia al jugador: " + distanceToPlayer);
 
         if (distanceToPlayer <= interactionRange)
         {
@@ -129,7 +136,14 @@ public class NPCNavMeshMovement : MonoBehaviour
             interactionIndicator.SetActive(false); // Ocultar indicador durante la interacción
         }
 
-        Debug.Log("Interacción con el NPC iniciada.");
+        // Verificar si el jugador tiene las cartas necesarias
+        hasRequiredCards = HasRequiredCards();
+
+        // Si el jugador tiene las cartas necesarias, comenzar desde el saludo
+        if (hasRequiredCards)
+        {
+            currentMessageIndex = 0;  // Reiniciar el flujo del diálogo para mostrar desde el saludo
+        }
 
         // Mostrar el primer mensaje
         ShowNextMessage();
@@ -185,14 +199,19 @@ public class NPCNavMeshMovement : MonoBehaviour
         {
             npcText.gameObject.SetActive(false); // Ocultar el texto al finalizar
         }
-
-        Debug.Log("Interacción con el NPC terminada.");
     }
 
     private void ShowNextMessage()
     {
         if (npcText != null && interactionMessages.Length > 0)
         {
+            // Si es el último mensaje y no tiene las cartas necesarias, mostrar el mensaje de advertencia
+            if (currentMessageIndex == interactionMessages.Length - 1 && !hasRequiredCards)
+            {
+                npcText.text = "Te faltan " + (requiredCards - playerUI.GetItemCount()) + " cartas para continuar...";
+                return;
+            }
+
             npcText.gameObject.SetActive(true); // Asegurarse de que el texto se muestre
             npcText.text = interactionMessages[currentMessageIndex]; // Mostrar el mensaje actual
 
@@ -203,5 +222,16 @@ public class NPCNavMeshMovement : MonoBehaviour
                 currentMessageIndex = 0; // Volver al primer mensaje si ya se mostró todos
             }
         }
+    }
+
+    // Función que verifica si el jugador tiene las cartas necesarias
+    private bool HasRequiredCards()
+    {
+        // Comprobamos si el jugador tiene las cartas necesarias (esto depende de cómo manejes las cartas en tu juego)
+        if (playerUI != null && playerUI.GetItemCount() >= requiredCards) // Usamos la variable pública "requiredCards"
+        {
+            return true;
+        }
+        return false;
     }
 }
