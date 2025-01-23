@@ -371,6 +371,15 @@ public class NPCNavMeshMovement : MonoBehaviour
         UpdateInteractionIndicator();
     }
 
+    private void DestroyNPC()
+    {
+        // Llamar al GameManager para agregar este NPC como completado
+        GameManager.Instance.AddCompletedNPC(npcID);
+
+        // Ahora destruimos el NPC
+        Destroy(gameObject);
+    }
+
     private void SelectRandomWaypoint()
     {
         Transform waypoint = waypoints[Random.Range(0, waypoints.Length)];
@@ -491,7 +500,7 @@ public class NPCNavMeshMovement : MonoBehaviour
                 }
 
                 // Cumple las condiciones: marcar como completado
-                GameManager.Instance.npcsCompletados.Add(npcID);
+                GameManager.Instance.AddCompletedNPC(npcID);
 
                 // Mostrar mensaje especial y cambiar de escena
                 npcText.text = specialMessage;

@@ -1,23 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public int maxLives = 5; 
-    private int currentLives;
-
     private MinigameManager minigameManager;
+    
 
     void Start()
     {
-        currentLives = maxLives;
         minigameManager = FindObjectOfType<MinigameManager>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)) 
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Interact();
         }
@@ -30,30 +25,17 @@ public class PlayerController : MonoBehaviour
         {
             if (torch != null)
             {
-                torch.Interact();  
+                torch.Interact();
             }
         }
     }
 
-    public void TakeDamage()
-    {
-        currentLives--; 
-
-        if (currentLives > 0)
-        {
-            Respawn();
-        }
-        else
-        {
-            GameOver();
-        }
-    }
-
-    private void Respawn()
+    // Método para reiniciar el jugador en el checkpoint actual
+    public void Respawn()
     {
         if (minigameManager != null)
         {
-            transform.position = minigameManager.GetCurrentCheckpoint();
+            transform.position = minigameManager.GetCurrentCheckpoint().position; // Respawn en el checkpoint guardado
         }
         else
         {
@@ -61,10 +43,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Método para manejar el game over (por si se necesita en algún momento)
     private void GameOver()
     {
         Destroy(gameObject);
         Debug.Log("¡Game Over!");
-
     }
 }

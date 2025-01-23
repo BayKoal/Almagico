@@ -9,9 +9,8 @@ public class CheckPoint : MonoBehaviour
             MinigameManager manager = FindObjectOfType<MinigameManager>();
             if (manager != null)
             {
-                manager.SaveCheckpoint(transform.position);
+                manager.SaveCheckpoint(transform); // Guarda el transform del checkpoint actual
             }
         }
     }
 }
-

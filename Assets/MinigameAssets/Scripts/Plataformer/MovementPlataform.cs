@@ -14,7 +14,7 @@ public class movementPlataform : MonoBehaviour
     public Animator animaciones;
     public Transform head;
 
-    private bool canMove = true;  // Variable para controlar el movimiento del jugador
+    private bool canMove = true;  
 
     void Start()
     {

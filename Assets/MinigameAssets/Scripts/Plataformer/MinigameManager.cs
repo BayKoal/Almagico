@@ -1,48 +1,44 @@
 using UnityEngine;
+using TMPro;  // Necesario para trabajar con TextMesh Pro
 
 public class MinigameManager : MonoBehaviour
 {
-    public Transform defaultCheckpoint;
-    private Vector3 currentCheckpoint;
+    public Transform[] checkpoints; 
+    private Transform currentCheckpoint; 
 
     public int totalTorches = 5;
-    public int listTorches = 0;
+    public int listTorches = 0;  
 
     public GameObject redLight;
-    public GameObject greenLight; 
+    public GameObject greenLight;
+
+    public TextMeshProUGUI torchCounterText; 
 
     void Start()
     {
-        // Configuración inicial de checkpoint
-        if (PlayerPrefs.HasKey("CheckpointX"))
-        {
-            currentCheckpoint = new Vector3(
-                PlayerPrefs.GetFloat("CheckpointX"),
-                PlayerPrefs.GetFloat("CheckpointY"),
-                PlayerPrefs.GetFloat("CheckpointZ")
-            );
-        }
-        else
-        {
-            currentCheckpoint = defaultCheckpoint.position;
-        }
+     
+        currentCheckpoint = checkpoints[0]; 
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
-            player.transform.position = currentCheckpoint;
+            player.transform.position = currentCheckpoint.position; // Mueve al jugador al primer checkpoint
         }
 
-        // Configuración inicial de luces
         redLight.SetActive(true);
         greenLight.SetActive(false);
+
+        UpdateTorchCounter();
     }
 
     public void TorchList()
     {
-        listTorches++;
-        Debug.Log("Antorchas encendidas: " + listTorches + "/" + totalTorches);
+        listTorches++;  
 
+        // Actualiza el contador de antorchas en la UI
+        UpdateTorchCounter();
+
+        // Si el jugador ha encendido todas las antorchas, completa el minijuego
         if (listTorches >= totalTorches)
         {
             CompleteMinigame();
@@ -51,24 +47,28 @@ public class MinigameManager : MonoBehaviour
 
     private void CompleteMinigame()
     {
-        Debug.Log("¡Minijuego completado!");
+        //Debug.Log("¡Minijuego completado!");
 
-        // Cambiar las luces al completar el minijuego
         redLight.SetActive(false);
         greenLight.SetActive(true);
     }
 
-    public void SaveCheckpoint(Vector3 checkpointPosition)
+    public void SaveCheckpoint(Transform checkpointTransform)
     {
-        PlayerPrefs.SetFloat("CheckpointX", checkpointPosition.x);
-        PlayerPrefs.SetFloat("CheckpointY", checkpointPosition.y);
-        PlayerPrefs.SetFloat("CheckpointZ", checkpointPosition.z);
-
-        currentCheckpoint = checkpointPosition;
+        currentCheckpoint = checkpointTransform; // Guarda el nuevo checkpoint al que llegó el jugador
     }
 
-    public Vector3 GetCurrentCheckpoint()
+    public Transform GetCurrentCheckpoint()
     {
-        return currentCheckpoint;
+        return currentCheckpoint; // Devuelve el checkpoint actual
+    }
+
+    // Método para actualizar el contador de antorchas en la UI
+    private void UpdateTorchCounter()
+    {
+        if (torchCounterText != null)
+        {
+            torchCounterText.text =  + listTorches + "/" + totalTorches;
+        }
     }
 }

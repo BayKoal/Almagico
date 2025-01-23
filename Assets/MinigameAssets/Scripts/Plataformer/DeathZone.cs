@@ -11,7 +11,8 @@ public class DeathZone : MonoBehaviour
             PlayerController player = other.GetComponent<PlayerController>();
             if (player != null)
             {
-                player.TakeDamage();
+                // Llamar a Respawn para que el jugador se reinicie en el último checkpoint
+                player.Respawn();
             }
         }
     }
