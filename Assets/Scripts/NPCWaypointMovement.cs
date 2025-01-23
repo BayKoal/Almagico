@@ -306,6 +306,8 @@ public class NPCNavMeshMovement : MonoBehaviour
     public Image fadeImage; // Imagen negra usada para el efecto de desvanecimiento
     public float fadeDuration = 1.5f;
 
+    public string npcID; // ID único del NPC
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -330,6 +332,12 @@ public class NPCNavMeshMovement : MonoBehaviour
         if (waypoints.Length > 0)
         {
             SelectRandomWaypoint();
+        }
+
+        if (GameManager.Instance.npcsCompletados.Contains(npcID))
+        {
+            Destroy(gameObject);
+            return;
         }
     }
 
@@ -482,10 +490,11 @@ public class NPCNavMeshMovement : MonoBehaviour
                     return;
                 }
 
-                // Mostrar mensaje especial si cumple las condiciones
-                npcText.text = specialMessage;
+                // Cumple las condiciones: marcar como completado
+                GameManager.Instance.npcsCompletados.Add(npcID);
 
-                // Iniciar el desvanecimiento y cambiar de escena
+                // Mostrar mensaje especial y cambiar de escena
+                npcText.text = specialMessage;
                 StartCoroutine(FadeAndChangeScene());
                 return;
             }
@@ -493,15 +502,9 @@ public class NPCNavMeshMovement : MonoBehaviour
             npcText.gameObject.SetActive(true);
             npcText.text = interactionMessages[currentMessageIndex];
             currentMessageIndex++;
-
-            if (currentMessageIndex >= interactionMessages.Length)
-            {
-                currentMessageIndex = 0;
-            }
         }
     }
-
-    private bool HasRequiredCards()
+private bool HasRequiredCards()
     {
         return playerUI != null && playerUI.GetItemCount() >= requiredCards;
     }

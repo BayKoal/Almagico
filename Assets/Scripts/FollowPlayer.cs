@@ -11,6 +11,7 @@ public class followPlayer : MonoBehaviour
     private bool isRotating = false;  // Variable para detectar si se está rotando
     private float mouseVal = 0f;
     private float mouseSpeed = 5f;
+    public bool cancelUpAndDown;
 
 
     // Start is called before the first frame update
@@ -28,16 +29,21 @@ public class followPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float upAndDown = Input.GetAxis("Mouse ScrollWheel");
-        
-        if (upAndDown != 0)
+        // Manejo del zoom con la rueda del mouse
+        if (!cancelUpAndDown) // Verifica si el zoom está habilitado
         {
-            mouseVal -= upAndDown * mouseSpeed;
-            mouseVal = Mathf.Clamp(mouseVal, 1, 14);
-            distanceFollow = mouseVal;
+            float upAndDown = Input.GetAxis("Mouse ScrollWheel");
+            if (upAndDown != 0)
+            {
+                mouseVal -= upAndDown * mouseSpeed;
+                mouseVal = Mathf.Clamp(mouseVal, 1, 14);
+                distanceFollow = mouseVal;
+            }
         }
-
-        
+        else
+        {
+            Debug.Log("El zoom está desactivado por 'cancelUpAndDown'");
+        }
 
 
 

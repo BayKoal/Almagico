@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MINIJUEGOS/LABERINTO.unity
     guid: d3fb735fc02cf014aa5e3d3805d45f48
+  - enabled: 1
+    path: Assets/Scenes/MINIJUEGOS/PLATAFORMAS.unity
+    guid: c048f7a9e19579f4d9d884d05baa5d17
   m_configObjects: {}

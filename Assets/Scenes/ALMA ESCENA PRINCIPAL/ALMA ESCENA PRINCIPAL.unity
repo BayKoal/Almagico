@@ -4644,6 +4644,7 @@ MonoBehaviour:
   floatHeight: 0.2
   floatSpeed: 1
   itemValue: 1
+  id: 9
 --- !u!1001 &38288461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7537,6 +7538,7 @@ MonoBehaviour:
   floatHeight: 0.2
   floatSpeed: 1
   itemValue: 1
+  id: 8
 --- !u!1001 &60224447
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10543,6 +10545,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1099996276}
   m_LocalEulerAnglesHint: {x: 0, y: -234.106, z: 0}
+--- !u!1 &87011749
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 87011751}
+  - component: {fileID: 87011750}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &87011750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87011749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a42c022afcbd3458b34b837a8fcb3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cartasRecolectadas: []
+  npcsCompletados: []
+--- !u!4 &87011751
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87011749}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 485.5686, y: 359.4891, z: -471.44092}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &87667436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17090,6 +17138,7 @@ MonoBehaviour:
   floatHeight: 0.2
   floatSpeed: 1
   itemValue: 100
+  id: 10
 --- !u!1001 &148019157
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23262,6 +23311,7 @@ MonoBehaviour:
   follow: {fileID: 90126315}
   distanceFollow: 10
   rotationSpeed: 3
+  cancelUpAndDown: 0
 --- !u!45 &196333920
 Skybox:
   m_ObjectHideFlags: 0
@@ -27254,9 +27304,10 @@ MonoBehaviour:
   corduraController: {fileID: 1737949484}
   requiredCards: 6
   requiredCordura: 50
-  nextSceneName: 
+  nextSceneName: LABERINTO
   fadeImage: {fileID: 0}
   fadeDuration: 1.5
+  npcID: 2
 --- !u!195 &235953327
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -27613,7 +27664,7 @@ Transform:
   m_GameObject: {fileID: 238331886}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.3, y: 5.5, z: -8.4}
+  m_LocalPosition: {x: 3.3, y: 2.47, z: -8.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -52194,9 +52245,10 @@ MonoBehaviour:
   corduraController: {fileID: 1737949484}
   requiredCards: 3
   requiredCordura: 50
-  nextSceneName: LABERINTO
+  nextSceneName: PLATAFORMAS
   fadeImage: {fileID: 461975348}
   fadeDuration: 1.5
+  npcID: 1
 --- !u!1001 &441684772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54887,6 +54939,7 @@ MonoBehaviour:
   floatHeight: 0.2
   floatSpeed: 1
   itemValue: 1
+  id: 1
 --- !u!1001 &466083700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82621,6 +82674,7 @@ MonoBehaviour:
   floatHeight: 0.2
   floatSpeed: 1
   itemValue: 1
+  id: 5
 --- !u!1001 &692106512
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -106482,6 +106536,7 @@ MonoBehaviour:
   floatHeight: 0.2
   floatSpeed: 1
   itemValue: 1
+  id: 4
 --- !u!4 &883653096 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3946091000313045109, guid: 88b403a665be9744f971d6bc4e878f0e,
@@ -132514,6 +132569,51 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1095171988}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1095864448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1095864450}
+  - component: {fileID: 1095864449}
+  m_Layer: 0
+  m_Name: LobbyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1095864449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095864448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a1b30682ea46a141b50672f4e911a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcs: []
+--- !u!4 &1095864450
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095864448}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 485.5686, y: 359.4891, z: -471.44092}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1095903609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -133978,6 +134078,7 @@ MonoBehaviour:
   floatHeight: 0.2
   floatSpeed: 1
   itemValue: 1
+  id: 6
 --- !u!1001 &1116887776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -136715,21 +136816,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 238331887}
     m_Modifications:
-    - target: {fileID: 2163693617504416371, guid: 60770bdb4dc667c45bea53db0339dc05,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 4948122169982268793, guid: 60770bdb4dc667c45bea53db0339dc05,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 6362110375572072661, guid: 60770bdb4dc667c45bea53db0339dc05,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 695807841, guid: bc99490022112274daef200bb63f2986, type: 3}
       propertyPath: m_Layer
       value: 11
@@ -137373,6 +137459,21 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 9201744042260438351, guid: bc99490022112274daef200bb63f2986,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163693617504416371, guid: 60770bdb4dc667c45bea53db0339dc05,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948122169982268793, guid: 60770bdb4dc667c45bea53db0339dc05,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6362110375572072661, guid: 60770bdb4dc667c45bea53db0339dc05,
         type: 3}
       propertyPath: m_Layer
       value: 11
@@ -149187,6 +149288,7 @@ MonoBehaviour:
   floatHeight: 0.2
   floatSpeed: 1
   itemValue: 1
+  id: 7
 --- !u!4 &1226239952 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6644844636832975279, guid: ffacc465341324446990e4db47402106,
@@ -154953,6 +155055,7 @@ MonoBehaviour:
   floatHeight: 0.2
   floatSpeed: 1
   itemValue: 1
+  id: 2
 --- !u!1 &1281399867
 GameObject:
   m_ObjectHideFlags: 0
@@ -161301,6 +161404,7 @@ MonoBehaviour:
   floatHeight: 0.2
   floatSpeed: 1
   itemValue: 1
+  id: 
 --- !u!136 &1337370911
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -219270,6 +219374,7 @@ MonoBehaviour:
   floatHeight: 0.2
   floatSpeed: 1
   itemValue: 1
+  id: 3
 --- !u!1001 &1814447905
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -238543,9 +238648,10 @@ MonoBehaviour:
   corduraController: {fileID: 1737949484}
   requiredCards: 2
   requiredCordura: 50
-  nextSceneName: 
+  nextSceneName: LABERINTO
   fadeImage: {fileID: 0}
   fadeDuration: 1.5
+  npcID: 4
 --- !u!195 &1943259448
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -266495,3 +266601,5 @@ SceneRoots:
   - {fileID: 1229092328}
   - {fileID: 1412075404}
   - {fileID: 421889260}
+  - {fileID: 87011751}
+  - {fileID: 1095864450}

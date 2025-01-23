@@ -7,6 +7,7 @@ public class FloatingItem : MonoBehaviour
     private Vector3 startPosition;    // Posición inicial del objeto
 
     public int itemValue = 1;         // Valor que el jugador obtiene al recolectar
+    public string id;                 // Identificador único para cada carta
 
     private bool playerInRange = false; // ¿Está el jugador cerca del objeto?
 
@@ -14,6 +15,12 @@ public class FloatingItem : MonoBehaviour
     {
         // Guardar la posición inicial
         startPosition = transform.position;
+
+        // Si la carta ya fue recogida, destrúyela
+        if (GameManager.Instance.cartasRecolectadas.Contains(id))
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Update()
@@ -25,10 +32,11 @@ public class FloatingItem : MonoBehaviour
         // Verificar si el jugador está cerca y presiona "E"
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
-            // Llamar a la función de recolectar el item en el PlayerUI
+            // Agregar la carta al inventario y al registro de cartas recogidas
             FindObjectOfType<PlayerUI>().AddItem(itemValue);
+            GameManager.Instance.cartasRecolectadas.Add(id);
 
-            // Destruir el objeto para simular que ha sido recogido
+            // Destruir la carta para simular que ha sido recogida
             Destroy(gameObject);
         }
     }
