@@ -28,6 +28,9 @@ public class MusicVolumeControl : MonoBehaviour
 
         // Asocia el evento OnValueChanged con la función OnVolumeChange
         volumeSlider.onValueChanged.AddListener(OnVolumeChange);
+
+        // Asegúrate de que la música esté configurada correctamente con el volumen desde el fade
+        UpdateMusicVolumeFromSlider();
     }
 
     // Llamado cuando el usuario ajusta el slider
@@ -66,5 +69,15 @@ public class MusicVolumeControl : MonoBehaviour
 
         // Actualiza el texto de volumen
         UpdateVolumeText(currentMusic.volume);
+    }
+
+    // Método para sincronizar el volumen de la música con el slider después de un fade
+    public void UpdateMusicVolumeFromSlider()
+    {
+        if (currentMusic != null)
+        {
+            currentMusic.volume = volumeSlider.value;
+            UpdateVolumeText(currentMusic.volume);
+        }
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI; // Para manejar el Slider
 
 public class MusicTransition : MonoBehaviour
 {
@@ -9,12 +10,18 @@ public class MusicTransition : MonoBehaviour
 
     private bool isMusic1Playing = true; // Variable para verificar cuál música está sonando actualmente
 
+    public Slider volumeSlider; // Slider para controlar el volumen
+    private float musicVolume = 1f; // Almacenará el volumen actual de la música
+
     private void Start()
     {
         // Al iniciar, la música por defecto es la música1
         currentMusic = music1;
         currentMusic.Play();
-        currentMusic.volume = 1f; // Asegurarse que la música inicial esté al volumen máximo
+        currentMusic.volume = volumeSlider.value; // Ajusta el volumen según el valor del slider
+
+        // Asegúrate de que el slider esté configurado en un rango adecuado
+        volumeSlider.onValueChanged.AddListener(UpdateVolume); // Escucha los cambios en el slider
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,6 +46,16 @@ public class MusicTransition : MonoBehaviour
         }
     }
 
+    // Método para actualizar el volumen cuando el slider cambie
+    private void UpdateVolume(float volume)
+    {
+        musicVolume = volume;
+        if (currentMusic != null)
+        {
+            currentMusic.volume = musicVolume;
+        }
+    }
+
     // Coroutine para hacer un fade entre dos músicas
     IEnumerator FadeMusic(AudioSource musicToStop, AudioSource musicToPlay)
     {
@@ -56,12 +73,11 @@ public class MusicTransition : MonoBehaviour
         // Fade in de la nueva música
         musicToPlay.Play();
         musicToPlay.volume = 0f; // Comienza en volumen cero
-        while (musicToPlay.volume < 1)
+        while (musicToPlay.volume < musicVolume) // Usa el volumen actual del slider
         {
             musicToPlay.volume += Time.deltaTime / fadeTime; // Aumenta el volumen poco a poco
             yield return null;
         }
-        musicToPlay.volume = 1f; // Asegurarse de que termine al máximo volumen
+        musicToPlay.volume = musicVolume; // Asegurarse de que termine al volumen configurado
     }
 }
-

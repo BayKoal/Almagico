@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/INTRO Y OUTRO/PANTALLA INICIO.unity
+    guid: e058f0b879767854a990f9ddfc344202
+  - enabled: 1
+    path: Assets/Scenes/INTRO Y OUTRO/Cutscenes.unity
+    guid: ca0f077cb805d4a449b7dbd22e9b62b3
+  - enabled: 1
     path: Assets/Scenes/ALMA ESCENA PRINCIPAL/ALMA ESCENA PRINCIPAL.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
@@ -14,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MINIJUEGOS/PLATAFORMAS.unity
     guid: c048f7a9e19579f4d9d884d05baa5d17
+  - enabled: 1
+    path: Assets/Scenes/MINIJUEGOS/RUNNING.unity
+    guid: c0e54d21da70f2046bcdf4418fa49d1b
   - enabled: 1
     path: Assets/Scenes/INTRO Y OUTRO/FinalScene.unity
     guid: 87d10cb9a00291744a8a96929eb94e27
