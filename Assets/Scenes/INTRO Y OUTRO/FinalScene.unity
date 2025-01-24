@@ -892,15 +892,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Curabitur in diam ac nibh blandit iaculis eu ut turpis. Morbi porttitor
-    tempor est vel mollis. Pellentesque aliquet neque ut elit blandit, in tempor
-    arcu suscipit. Suspendisse fringilla facilisis magna, in iaculis ante varius
-    at. Ut ultricies pretium libero id sagittis. Quisque ultrices laoreet lectus,
-    eu luctus leo bibendum ac. Nullam eleifend, leo ut sollicitudin pretium, arcu
-    lorem faucibus massa, in condimentum nibh metus vel orci. Nam nec erat convallis,
-    aliquam velit sed, condimentum mi. Nunc dapibus massa ultricies eros elementum,
-    et aliquet ipsum faucibus. Class aptent taciti sociosqu ad litora torquent per
-    conubia nostra, per inceptos himenaeos.
+  m_text: "Cr\xE9ditos de Almagico\nSongs: Yo Te Amo - UPPERROOM | TOMATULUGAR ,
+    UNDERTALE - Shop \n\nAssets: Bondiana, BLINK, KEY MOUSE, JUSTCREATE, YUKI 2022,
+    TRIDENTCORP, VANILLAART, HQP STUDIOS\nDevelopers: Juan Eduardo Benavides Rosale,
+    Pablo Lopez Arredondo,\_Sebastian\_David"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a0e1ede4f687f5649902e2aac6ea679b, type: 2}
   m_sharedMaterial: {fileID: 4711860054099142175, guid: a0e1ede4f687f5649902e2aac6ea679b,
